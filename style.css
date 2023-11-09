@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+.container{
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header > .container, footer > .container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    align-items: center;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+header, footer{
+    background-color: black;
+    padding-top: 16px;
+    color: white;
+}
+
+.container-flex{
+    display: flex;
+}
+
+#sobre-a-loja img{
+    max-width: 400px;
+    margin-right: 24px;
+}
+
+section{
+    padding: 40px 0;
+}
+
+section h2{
+    margin-bottom: 16px;
+}
+
+
+
+ button{
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+.form-campo{
+    margin-bottom: 16px;
+    
+}
+
+.form-campo label{
+    font-weight: bold;
+    display: block;
+
+}
+
+.form-campo input{
+    width: 100%;
+    display: block;
+    padding: 8px;
+}
+
+form{
+    max-width: 360px;
+}
+
+form button{
+    max-width: 120px;
+}
