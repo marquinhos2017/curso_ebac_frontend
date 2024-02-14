@@ -7,38 +7,55 @@ describe('Testes para a pagina de agenda', () => {
     })
 
 
-    // it('Deve preencher o formulario de insercao - Marcos', () => {
-    //     cy.get('input[type="text"]').type('Marcos Rodrigues')
-    //     cy.get('input[type="email"]').type('marcos.rodrigues2015@yahoo.com.br')
-    //     cy.get('input[type="tel"]').type('11 12345678')
-    //     cy.get('button[type="submit"]').click()
-        
-    // })
+    it('Deve preencher o formulario de insercao - Marcos Rodrigues', () => {
+        cy.get('input[type="text"]').type('Marcos Rodrigues')
+        cy.get('input[type="email"]').type('marcos.rodrigues2015@yahoo.com.br')
+        cy.get('input[type="tel"]').type('11 12345678')
+        cy.get('button[type="submit"]').click()
+        cy.wait(1000); // 1000 milissegundos = 1 segundo
 
+        
+    })
     // it('Deve preencher o formulario de insercao - Fabiana', () => {
     //     cy.get('input[type="text"]').type('Fabiana')
     //     cy.get('input[type="email"]').type('fabianagorjes@yahoo.com.br')
     //     cy.get('input[type="tel"]').type('34 56783946')
     //     cy.get('button[type="submit"]').click()
 
-        
     // })
 
-    // it('Deve excluir um contato da agenda', () => {
-    //         // Visite a página onde está a agenda de contatos
-        
-    //     cy.get('.sc-beqWaB') // Seleciona a div mãe que engloba os contatos e os botões.within(() => {
-    //     cy.get('.contato:last-child') // Encontra o último contato adicionado
-    //     .find('button.delete') // Encontra o botão "Deletar" dentro do último contato
-    //     .click(); // Clica no botão "Deletar"
-    // });
+    it('Verifica se Marcos Rodrigues foi realmente adicionado', () => {
+        cy.contains('Marcos Rodrigues').should('exist');
+        cy.wait(1000); // 1000 milissegundos = 1 segundo
 
-    // it('Deve alterar o ultimo adicionado', () => {
-    //     cy.get('.sc-beqWaB') // Seleciona a div mãe que engloba os contatos e os botões.within(() => {
-    //     cy.get('.contato:last-child').find('button.edit').click()
-    //     cy.get('input[type="tel"]').clear()
-    //     cy.get('input[type="tel"]').type('85 989sd')
-    //     cy.get('button[type="submit"]').click()
-    // });
+        
+    })
+
+    it("Verifica edicao do primeiro contato da lista", () => {
+        cy.get('.contato').first().find('.edit').click()
+        cy.get('input[type="text"]').should('have.value', 'Marcos Rodrigues');
+        cy.wait(1000); // 1000 milissegundos = 1 segundo
+
+        
+
+    })
+
+    it("Verifica se a remocao foi realizada com sucesso", () => {
+        cy.get('.contato').then((contatos) => {
+            const tamanhoInicial = contatos.length;
+      
+            cy.get('.contato:last-child').find('button.delete').click(); 
+      
+
+            cy.get('.contato').should('have.length', tamanhoInicial - 1);
+            cy.wait(1000); // 1000 milissegundos = 1 segundo
+
+          });
+ 
+        
+
+    })
+
+
 
 })
